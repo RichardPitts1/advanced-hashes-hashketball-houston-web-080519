@@ -222,70 +222,70 @@ end
 
 
 
-# def most_points_scored
-#     points_data = []
-#     most_points = nil
-#     name = nil
-#     game_hash.each do |location, team_data|
-#         team_data[:players].each do |attribute, data|
-#             points_data.push(data[:points])
-#             most_points = points_data.sort[-1]
-#         end
-#     end
-#     game_hash.each do |location, team_data|
-#         name = team_data[:players].each do |name, stats|
-#             if stats[:points] == most_points
-#                 return name
-#           end
-#         end
-#       end
-# end
+def most_points_scored
+    points_data = []
+    most_points = nil
+    name = nil
+    game_hash.each do |location, team_data|
+        team_data[:players].each do |attribute, data|
+            points_data.push(data[:points])
+            most_points = points_data.sort[-1]
+        end
+    end
+    game_hash.each do |location, team_data|
+        name = team_data[:players].each do |name, stats|
+            if stats[:points] == most_points
+                return name
+          end
+        end
+      end
+end
 
-# def winning_team
-#     home_points = []
-#     away_points = []
-#     game_hash.each do |location, team_data|
-#         game_hash[:home][:players].each do |attribute, data|
-#             home_points.push(data[:points])
-#             end
-#         end
-#     game_hash.each do |location, team_data|
-#         game_hash[:away][:players].each do |attribute, data|
-#             away_points.push(data[:points])
-#             end
-#         end
-#     if home_points.sum > away_points.sum
-#         return game_hash[:home][:team_name]
-#     else
-#         return game_hash[:away][:team_name]
-#     end
-# end
+def winning_team
+    home_points = []
+    away_points = []
+    game_hash.each do |location, team_data|
+        game_hash[:home][:players].each do |attribute, data|
+            home_points.push(data[:points])
+            end
+        end
+    game_hash.each do |location, team_data|
+        game_hash[:away][:players].each do |attribute, data|
+            away_points.push(data[:points])
+            end
+        end
+    if home_points.sum > away_points.sum
+        return game_hash[:home][:team_name]
+    else
+        return game_hash[:away][:team_name]
+    end
+end
 
 
-# def player_with_longest_name
-#     list_of_names = []
-#     game_hash.each do |location, team_data|
-#         team_data[:players].each do |name, stats|
-#             list_of_names.push(name)
-#             end
-#         end
-#     list_of_names.max_by(&:length)
-# end
+def player_with_longest_name
+    list_of_names = []
+    game_hash.each do |location, team_data|
+        team_data[:players].each do |name, stats|
+            list_of_names.push(name)
+            end
+        end
+    list_of_names.max_by(&:length)
+end
 
-# def long_name_steals_a_ton?
-#     list_of_names = []
-#     most_steals = []
-#     game_hash.each do |location, team_data|
-#         team_data[:players].each do |name, stats|
-#             list_of_names.push(name)
-#             most_steals.push(stats[:steals])
-#         end
-#     end
-#     game_hash.each do |location, team_data|
-#         team_data[:players].each do |name, stats|
-#             if name == list_of_names.max_by(&:length) && stats[:steals] == most_steals.max
-#                 return true
-#             end
-#         end
-#     end
-# end
+def long_name_steals_a_ton?
+    list_of_names = []
+    most_steals = []
+    game_hash.each do |location, team_data|
+        team_data[:players].each do |name, stats|
+            list_of_names.push(name)
+            most_steals.push(stats[:steals])
+        end
+    end
+    game_hash.each do |location, team_data|
+        team_data[:players].each do |name, stats|
+            if name == list_of_names.max_by(&:length) && stats[:steals] == most_steals.max
+                return true
+            end
+        end
+    end
+end
